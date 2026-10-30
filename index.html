@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="動画の狙いを整理して、ショート動画の台本をAIに依頼する指示書を作成します。"><title>台本のまえに | ショート動画の企画・指示書メーカー</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a class="brand" href="./"><span class="logo" aria-hidden="true">▤</span> 台本のまえに</a><span class="header-note">ショート動画の企画・指示書メーカー</span></header>
+<main>
+<div class="intro"><div class="eyebrow">伝えたいことを、伝わる動画へ。</div><h1>動画の狙いを整理して、<br>台本づくりを依頼しよう。</h1><p>誰に、何を伝えて、どんな行動につなげるか。<br>企画をまとめて「ショート動画台本ディレクター」に渡す指示書をつくります。</p><div class="badges"><span>TikTok</span><span>30秒〜1分程度</span><span>AI接続不要</span></div></div>
+<nav aria-label="作成の流れ" class="steps"><span><b>1</b> 企画を入力</span><i>→</i><span><b>2</b> 指示書を生成・編集</span><i>→</i><span><b>3</b> コピーして台本作成へ</span></nav>
+<section class="handoff"><div><strong>あなたは企画に集中。演出はディレクターへ。</strong><p>このアプリで対象者・障壁・目的を整理 → 指示書をコピー → エージェントのチャットに貼り付けて台本を依頼。</p></div><span>自動送信はしません</span></section>
+<div class="workspace"><form id="form" novalidate>
+<section class="card"><div class="section-title"><span>01</span><h2>立場とゴールを決める</h2></div><p class="section-help">誰として発信し、何につなげたいかを整理しましょう。</p><div id="basics"></div></section>
+<section class="card"><div class="section-title"><span>02</span><h2>届けたい相手を考える</h2></div><p class="section-help">相手の認知・関心と、具体的な人物像をセットで考えます。</p><fieldset><legend>対象者の認知・関心</legend><div class="stage-options">
+<label><input type="radio" name="stage" value="0" checked><span>知らない人<small>SUNABACOや講座を知らない</small></span></label>
+<label><input type="radio" name="stage" value="1"><span>知っているが興味がない人<small>自分が学ぶ場所としては考えていない</small></span></label>
+<label><input type="radio" name="stage" value="2"><span>興味はあるが行動しない人<small>学習に興味はあるが受講をためらう</small></span></label>
+</div></fieldset><div id="audience-fields"></div></section>
+<section class="card"><div class="section-title"><span>03</span><h2>障壁と伝え方を考える</h2></div><p class="section-help">視聴者の不安と、発信側の課題を分けて整理します。</p>
+<div class="perspective">視聴者側の障壁</div><label for="barrier">行動しない理由の分類</label><p class="help" id="barrier-help">「商品」はスクール集客では講座・学習体験のこと。段階だけで理由を決めつけずに選びます。</p><select id="barrier" name="barrier" aria-describedby="barrier-help"></select><div id="reason-fields"></div>
+<div class="suggestions"><strong>この障壁に合う伝え方のヒント</strong><p>候補を押すと入力できます。入力後の自由編集も可能です。</p><div id="video-suggestions" class="chips"></div><div id="appeal-suggestions" class="chips"></div><small>実績・推薦・体験制度などは、実在を確認できる場合のみ使用してください。</small></div>
+<div id="video-fields"></div><div class="perspective publisher">発信側の課題</div><div id="issue-fields"></div></section>
+<section class="card"><div class="section-title"><span>04</span><h2>仕上げの条件を添える</h2></div><p class="section-help">任意の項目です。決まっていることだけ入力してください。</p><div id="optional-fields"></div><div class="delivery"><label for="mode">指示書の渡し先</label><select id="mode" name="mode"><option value="agent">ショート動画台本ディレクター</option><option value="general">一般の生成AI・基本テンプレート</option></select><p class="help" id="mode-help">企画と制作条件を引き継ぎ、フック・台本・制作メモなどの作成を依頼します。</p></div><div id="general-options" hidden><label class="check"><input type="checkbox" name="direction" checked><span>台本の構成・演出条件を追加する<small>冒頭のつかみ、秒数つきの表、CTA、事実の創作防止など。</small></span></label><details><summary>追加される条件を確認する</summary><pre id="direction-preview"></pre></details></div></section>
+<div id="errors" class="error-summary" role="alert" hidden></div><div class="completion"><span id="progress-text"></span><progress id="progress" max="7" value="1" aria-label="必須項目の入力状況"></progress></div><div class="form-actions"><button id="generate" class="primary" type="submit">指示書を生成する <span aria-hidden="true">→</span></button><button type="button" id="reset" class="text-button">リセット</button></div><p class="footnote">入力例は架空の企画です。実際の受講条件・実績を示すものではありません。</p>
+</form>
+<aside><section class="card output"><div class="output-top"><div class="eyebrow">YOUR PROMPT</div><span id="state" class="status">未生成</span></div><h2>指示書プレビュー</h2><p class="section-help">生成したら、そのまま編集できます。<br>完成した指示書をコピーして、選んだ渡し先のチャットに貼り付けましょう。</p><p id="stale" class="stale" hidden role="status">入力内容が変わっています。最新の入力を反映するには再生成してください。直接編集した内容は、確認するまで保持されます。</p><div id="empty"><div class="paper-icon" aria-hidden="true">▤</div><h3>企画がまとまったら、生成。</h3><p>左の項目を入力して<br>「指示書を生成する」を押してください。</p><small>スマートフォンでは上の項目を入力します。</small></div><label for="output" class="sr-only">指示書の編集</label><textarea id="output" hidden spellcheck="false"></textarea><div class="output-bottom"><span id="count">0文字</span><button id="copy" class="primary" type="button" disabled>指示書をコピー</button></div><p id="message" role="status" aria-live="polite"></p><div class="next-step"><strong>コピーした後は</strong><p id="next-step-text">「ショート動画台本ディレクター」を開き、チャットに貼り付けて送信してください。</p><small>返された台本の「要確認」事項を確認してから撮影へ進みましょう。</small></div><p class="footnote">台本そのものは生成しません。入力内容は外部へ送信されません。</p></section></aside></div>
+<footer>台本のまえに <span>考えを整理する、小さな制作ツール。</span></footer>
+</main><script type="module" src="app.js"></script>
+</body></html>
