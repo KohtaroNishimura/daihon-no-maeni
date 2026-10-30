@@ -6,7 +6,7 @@
 
 ## 開発状況
 
-初期版を実装済みです。指示書の生成・直接編集・コピーに対応しています。AI接続や台本そのものの生成は行いません。ローカルアプリとして実装し、公開はしていません。起動方法と検証状況は末尾を参照してください。
+初期版を実装済みです。指示書の生成・直接編集・コピーに対応しています。AI接続や台本そのものの生成は行いません。GitHub Pagesで公開します。公開先は末尾を参照してください。起動方法と検証状況は末尾を参照してください。
 
 ## 目的
 
@@ -246,12 +246,16 @@ npm run build # dist/ に配信用の静的ファイルを出力
 
 ## GitHub Pagesでの公開
 
-アプリ名は「台本のまえに」、リポジトリ名・パッケージ名は `daihon-no-maeni` とします。GitHub上の公開先リポジトリは未登録です。
+アプリ名は「台本のまえに」、リポジトリ名・パッケージ名は `daihon-no-maeni` とします。GitHubリポジトリ：https://github.com/KohtaroNishimura/daihon-no-maeni
 
 `.github/workflows/pages.yml` を追加しています。`main` へのpushまたは手動実行により、テスト → ビルド → `dist/` の公開を行います。アプリの配信用ファイルのみをアップロードし、参照資料やREADMEはPagesの成果物に含めません。CSS・JavaScriptは相対パスで参照するため、リポジトリ名を含むURLでも動作する構成です。
 
 初回はGitHubリポジトリへソースを登録し、Settings → Pages → Build and deployment → Sourceで **GitHub Actions** を選択します。その後、Actionsの **Deploy to GitHub Pages** を実行します。成功すると公開URLが表示されます。
 
-現在はワークフローの準備まで完了しています。GitHubの認証・公開先リポジトリが未設定のため、GitHubへのアップロードとPagesデプロイは未実施です。
+GitHubリポジトリの作成・ソース登録・Pagesの有効化を完了しました。
+
+公開URL：https://kohtaronishimura.github.io/daihon-no-maeni/
+
+公開状況はリポジトリのActionsで確認できます。mainへのpush時に自動更新されます。
 
 設定の根拠：[GitHub公式：カスタムワークフローによるPages公開](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
